@@ -25,7 +25,7 @@ router.post('/login', async(req, res) => {
 });
 
 router.get('/register', (req, res) => {
-    res.render('auth/register');
+    res.render('auth/register', { title: "Register Page" });
 });
 
 router.post('/register', async(req, res) => {
@@ -33,7 +33,7 @@ router.post('/register', async(req, res) => {
 
     if (password !== rePassword) {
         res.locals.error = 'Password missmatch';
-        return res.render('/auth/register', )
+        return res.render('/auth/register', { title: "Register Page" });
     };
 
     try {

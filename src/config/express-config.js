@@ -5,6 +5,7 @@
 
 
  function expressConfig(app) {
+     app.locals.title = 'Real Estate';
      app.use('/static', express.static(path.resolve(__dirname, '../public')));
      app.use(express.urlencoded({ extended: true }));
      app.use(cookieParser());
