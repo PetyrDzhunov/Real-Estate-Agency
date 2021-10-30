@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const { PORT } = require('./constants');
+const routes = require('./routes');
 require('./config/hbs-config')(app);
 require('./config/express-config')(app);
 
-
-app.get('/', (req, res) => {
-    res.render('home');
-});
+app.use(routes);
 
 
-app.listen(port, () => console.log(`The app is running on http://localhost:${port}/`));
+
+
+
+app.listen(PORT, () => console.log(`The app is running on http://localhost:${PORT}/`));
