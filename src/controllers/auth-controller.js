@@ -8,6 +8,7 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', async(req, res) => {
+    console.log(req.body);
     const { name, username, password } = req.body;
     try {
         let token = await authService.login({
@@ -36,11 +37,15 @@ router.post('/register', async(req, res) => {
     };
 
     try {
-        let token = await authService.register({ name, username, password });
-        //TODO : Set token in httpOnly cookie;
-        res.redirect('/')
+
+        await authService.register({ name, username, password });
+
+        let token = await authService.login({ username, password });
+        res.cookie(AUTH_COOKIE_NAME, token);
+        res.redirect('/');
     } catch (err) {
         //TODO  : return error response;
+        console.log(err);
     };
 });
 
