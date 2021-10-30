@@ -6,7 +6,7 @@ const { JWT_SECRET } = require('../constants');
 
 exports.login = async({ username, password }) => {
     // search for the user
-    let user = await User.findOne({ username }).lean();
+    let user = await User.findOne({ username })
     if (!user) {
         //If there's no user return this error
         // which we will catch in the try catch block

@@ -17,6 +17,7 @@ router.post('/login', async(req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token);
         res.redirect('/');
     } catch (err) {
+        console.log(err);
         res.end();
         //TODO: Return proper notification; 
     }
