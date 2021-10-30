@@ -10,7 +10,10 @@ let housingSchema = new Schema({
         enum: ['Apartament', 'Villa', ' House'],
         required: true,
     },
-
+    year: {
+        type: Number,
+        required: true,
+    },
     city: {
         type: String,
         required: true,
