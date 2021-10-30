@@ -11,6 +11,7 @@ require('./config/express-config')(app);
 app.use(routes);
 initDatabase()
     .then(() => {
+        console.log('Database is running now.');
         app.listen(PORT, () => console.log(`The app is running on http://localhost:${PORT}/`));
     })
     .catch(err => {
