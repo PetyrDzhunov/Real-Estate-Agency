@@ -1,0 +1,26 @@
+{
+    "name": "base-skeleton-back-end-Papazov-2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon ./src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PetyrDzhunov/Real-Estate-Agency.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/PetyrDzhunov/Real-Estate-Agency/issues"
+    },
+    "homepage": "https://github.com/PetyrDzhunov/Real-Estate-Agency#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.14"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
