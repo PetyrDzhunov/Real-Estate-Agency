@@ -8,6 +8,7 @@ exports.auth = function(req, res, next) {
         jwt.verify(token, JWT_SECRET)
             .then(decodedToken => {
                 req.user = decodedToken;
+                req.locals.user = decodedToken;
                 next();
             })
             .catch(err => {
@@ -20,5 +21,12 @@ exports.auth = function(req, res, next) {
         // stop the request so we just call next
         next();
     };
+};
 
+exports.isAuth = function(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/auth/login');
+    };
 };
