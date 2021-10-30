@@ -1,4 +1,8 @@
+const jwt = require('../utils/jwt');
+
 const User = require('../models/User');
+const { JWT_SECRET } = require('../constants');
+
 
 exports.login = async({ username, password }) => {
     // search for the user
@@ -16,7 +20,14 @@ exports.login = async({ username, password }) => {
     };
 
     //TODO : create token which we will return  as a promise;
+    let payload = {
+        _id: user._id,
+        name: user.name,
+        username: user.username,
+    };
+    let token = await jwt.sign(payload, JWT_SECRET);
 
+    return token;
 
 };
 
