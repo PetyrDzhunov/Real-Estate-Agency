@@ -2,7 +2,6 @@ const router = require('express').Router();
 
 const housingService = require('../services/housing-service');
 
-const { isAuth } = require('../middlewares/auth-middleware');
 
 router.get('/', async(req, res) => {
     let housings = await housingService.getAll();
@@ -22,10 +21,15 @@ router.post('/create', async(req, res) => {
     };
 });
 
-router.get('/:housingId/details', isAuth, async(req, res) => {
+router.get('/:housingId/details', async(req, res) => {
     let id = req.params.housingId;
+    let isOwner;
     let housing = await housingService.getOne(id);
-    let isOwner = housing.owner == req.user._id;
+    if (req.user) {
+        isOwner = housing.owner === req.user._id;
+    } else {
+        isOwner = undefined;
+    }
     res.render('housing/details', {...housing, isOwner });
 });
 
