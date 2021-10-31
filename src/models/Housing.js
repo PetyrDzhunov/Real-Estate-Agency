@@ -1,13 +1,13 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-let housingSchema = new Schema({
+let housingSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
     type: {
         type: String,
-        enum: ['Apartament', 'Villa', ' House'],
+        enum: ['Apartment', 'Villa', 'House'],
         required: true,
     },
     year: {
@@ -30,8 +30,12 @@ let housingSchema = new Schema({
         type: Number,
         required: true,
     },
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+    },
 
-});
+}, { timestamps: true });
 
-let Housing = model('Housing', housingSchema);
+let Housing = mongoose.model('Housing', housingSchema);
 module.exports = Housing;
