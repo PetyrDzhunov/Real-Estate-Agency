@@ -20,3 +20,7 @@ exports.delete = (housingId) => {
 exports.updateOne = (housingId, housingData) => {
     return Housing.findByIdAndUpdate(housingId, housingData);
 };
+
+exports.search = (text) => {
+    return Housing.find({ type: { $regex: text, $options: '-i' } }).lean()
+};
