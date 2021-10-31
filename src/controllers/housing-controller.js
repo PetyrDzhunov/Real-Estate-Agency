@@ -66,7 +66,6 @@ router.get('/:housingId/edit', async(req, res) => {
 router.post('/:housingId/edit', async(req, res) => {
     await housingService.updateOne(req.params.housingId, req.body);
     res.redirect(`/housing/${req.params.housingId}/details`);
-
 });
 
 
