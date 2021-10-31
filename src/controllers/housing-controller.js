@@ -17,10 +17,20 @@ router.post('/create', isAuth, async(req, res) => {
     try {
         await housingService.create({...req.body, owner: req.user._id });
         res.redirect('/housing');
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error)
+        res.render('housing/create', { error: getErrorMessage(error) });
     };
 });
+
+function getErrorMessage(error) {
+    let errorNames = Object.keys(error.errors);
+    if (errorNames.length > 0) {
+        return error.errors[errorNames[0]];
+    } else {
+        return error.message;
+    };
+};
 
 router.get('/:housingId/details', async(req, res) => {
     let id = req.params.housingId;

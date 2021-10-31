@@ -13,14 +13,18 @@ let housingSchema = new mongoose.Schema({
     year: {
         type: Number,
         required: true,
+        min: 1960,
+        max: 2021,
     },
     city: {
         type: String,
         required: true,
+        minlength: [4, 'The city should be at least 4 characters long']
     },
     image: {
         type: String,
         required: true,
+        validate: /^https?:\/\//i
     },
     description: {
         type: String,
@@ -29,6 +33,8 @@ let housingSchema = new mongoose.Schema({
     availablePieces: {
         type: Number,
         required: true,
+        min: 0,
+        max: 15,
     },
     owner: {
         type: mongoose.Types.ObjectId,

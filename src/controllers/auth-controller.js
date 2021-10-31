@@ -18,8 +18,8 @@ router.post('/login', isGuest, async(req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token);
         res.redirect('/');
     } catch (err) {
-        console.log(err);
-        res.end();
+        console.log(err.errors);
+        res.render('auth/login');
         //TODO: Return proper notification; 
     }
 });
@@ -44,8 +44,9 @@ router.post('/register', isGuest, async(req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token);
         res.redirect('/');
     } catch (err) {
-        //TODO  : return error response;
-        console.log(err);
+        let error = err.errors;
+        console.log(error);
+        res.render('auth/register');
     };
 });
 
