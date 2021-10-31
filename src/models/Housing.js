@@ -41,5 +41,9 @@ let housingSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
+housingSchema.method('getTenants', function() {
+    return this.tenants.map(x => x.name).join(', ');
+});
+
 let Housing = mongoose.model('Housing', housingSchema);
 module.exports = Housing;
