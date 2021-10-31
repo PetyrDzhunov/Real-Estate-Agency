@@ -8,7 +8,6 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', async(req, res) => {
-    console.log(req.body);
     const { name, username, password } = req.body;
     try {
         let token = await authService.login({
