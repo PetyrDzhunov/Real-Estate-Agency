@@ -16,3 +16,7 @@ exports.addTenant = (housingId, tenantId) => {
 exports.delete = (housingId) => {
     return Housing.findByIdAndDelete(housingId);
 };
+
+exports.updateOne = (housingId, housingData) => {
+    return Housing.findByIdAndUpdate(housingId, housingData);
+};
